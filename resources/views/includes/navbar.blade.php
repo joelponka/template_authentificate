@@ -69,9 +69,8 @@
         
         <li class="dropdown">
             <a href="#" data-toggle="dropdown"
-                class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="{{ auth()->user()->avatar ) }}"
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="{{ asset('users/images/'.auth()->user()->avatar ) }}"
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span>
-                {{-- {{ asset('users/images/'.auth()->user()->avatar }} --}}
             </a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
                 <div class="dropdown-title">{{ Auth::user()->name }}</div>

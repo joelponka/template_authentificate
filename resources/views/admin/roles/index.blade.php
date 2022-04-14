@@ -28,7 +28,7 @@
                         <th>#</th>
                         <th>@lang('Name')</th>
                         <th>@lang('Permissions')</th>
-                        <th>@lang('Action')</th>
+                        <th>@lang('Actions')</th>
                     </tr>
                   </thead>
                   <tbody>

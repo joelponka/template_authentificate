@@ -86,7 +86,7 @@ class UsersController extends Controller
 
         Alert::toast(trans('User has been successfully updated.'), 'success');
 
-        return back();
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -100,6 +100,6 @@ class UsersController extends Controller
         $user->delete();
 
         Alert::toast(trans('User has been successfully removed.'), 'success');
-        return back();
+        return redirect()->route('admin.users.index');
     }
 }

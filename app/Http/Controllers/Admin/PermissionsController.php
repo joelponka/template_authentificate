@@ -72,7 +72,7 @@ class PermissionsController extends Controller
 
         $permission->update($request->all());
         Alert::toast(trans('Permission has been successfully updated.'), 'success');
-        return back();
+        return redirect()->route('admin.permissions.index');
     }
 
     /**
@@ -86,6 +86,6 @@ class PermissionsController extends Controller
         $permission->delete();
 
         Alert::toast(trans('Permission has been successfully removed.'), 'success');
-        return back();
+        return redirect()->route('admin.permissions.index');
     }
 }

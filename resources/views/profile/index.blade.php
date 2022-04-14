@@ -11,7 +11,7 @@
                 <div class="card author-box">
                     <div class="card-body">
                         <div class="author-box-center">
-                            <img alt="image"  src="{{ asset('users/images/'. $user->avatar) }}" class="rounded-circle author-box-picture" style="display: inline;">
+                            <img alt="image"  src="{{ asset('users/images/'. auth()->user()->avatar) }}" class="rounded-circle author-box-picture" style="display: inline;">
                             <div class="clearfix"></div>
                             <div class="author-box-name">
                                 <span class="badge badge-success">{{ $user->name }} {{ $user->last_name }}</span>
@@ -60,7 +60,7 @@
                         <div class="tab-content tab-bordered" id="myTab3Content">
                             <!-- Profile informations -->
                             <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="home-tab2">
-                                <form method="post" action="{{ route('admin.profilinformation', ['user' => $user]) }}" class="needs-validation" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('admin.profilinformation') }}" class="needs-validation" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     
@@ -79,7 +79,7 @@
 
                             <!-- Change password -->
                             <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="profile-tab2">
-                                <form method="post" action="{{ route('admin.postupdatepassword', ['user' => $user]) }}" enctype="multipart/form-data" class="needs-validation">
+                                <form method="post" action="{{ route('admin.postupdatepassword') }}" enctype="multipart/form-data" class="needs-validation">
                                     @csrf
 
                                     <div class="card-header">

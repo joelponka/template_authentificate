@@ -10,7 +10,7 @@
     <!--begin::Image-->
     <div class="form-group row">
         <label class="col-sm-3 col-form-label">@lang('Image')</label>
-        <div class="col-lg-9 col-xl-9">
+        <div class="col-lg-9 col-xl-9 col-sm-9">
             <div class="input-group input-group-solid input-group-lg">
                 <input type="file" name="avatar" id="avatar" class="form-control form-control-solid @error('avatar') is-invalid @enderror" accept=".png, .jpg, .jpeg" 
                     value="@if ($route == 'admin.users.create') {{old('avatar')}} @else {{$user->avatar}} @endif"/>
@@ -54,8 +54,8 @@
 
     <!--begin::Email-->
     <div class="form-group row">
-        <label class="col-xl-3 col-lg-3 col-form-label">@lang('Email') <span class="text-danger">*</span></label>
-        <div class="col-lg-9 col-xl-9">
+        <label class="col-sm-3 col-form-label">@lang('Email') <span class="text-danger">*</span></label>
+        <div class="col-lg-9 col-xl-9 col-sm-9">
             <div class="input-group input-group-solid input-group-lg">
                 <input type="text" class="form-control form-control-solid @error('email') is-invalid @enderror" 
                     name="email" id="email" value="@if($route == 'admin.users.create'){{old('email')}}@else{{$user->email}}@endif" />
@@ -69,8 +69,8 @@
 
     <!--begin::Phone-->
     <div class="form-group row">
-        <label class="col-xl-3 col-lg-3 col-form-label">@lang('Phone') <span class="text-danger">*</span></label>
-        <div class="col-lg-9 col-xl-9">
+        <label class="col-sm-3 col-form-label">@lang('Phone') <span class="text-danger">*</span></label>
+        <div class="col-lg-9 col-xl-9 col-sm-9">
             <div class="input-group input-group-solid input-group-lg">
                 <input type="number" class="form-control form-control-solid @error('phone_number') is-invalid @enderror" 
                     name="phone_number" id="phone_number" value="@if($route == 'admin.users.create'){{old('phone_number')}}@else{{$user->phone_number}}@endif" />

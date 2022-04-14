@@ -27,6 +27,7 @@ class ProfileController extends Controller
     public function profilinformation(Request $request)
     {
         $user = User::findOrFail(auth()->id());
+        
         $request->validate([
             'name' => 'required|min:5',
             'last_name' => ['required', 'string', 'max:255'],
@@ -35,7 +36,7 @@ class ProfileController extends Controller
             'avatar' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $user->update($request->all());
-
+        
         Alert::toast(trans('User has been successfully updated.'), 'success');
         return back();
     }

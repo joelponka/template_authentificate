@@ -100,7 +100,7 @@ class RolesController extends Controller
         } else {
             $role->givePermissionTo($permissions);
             Alert::toast(trans('Role has been successfully updated.'), 'success');
-            return back();
+            return redirect()->route('admin.roles.index');
         }
     }
 
@@ -115,6 +115,6 @@ class RolesController extends Controller
         $role->delete();
 
         Alert::toast(trans('Role has been successfully removed.'), 'success');
-        return back();
+        return redirect()->route('admin.roles.index');
     }
 }

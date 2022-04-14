@@ -55,16 +55,11 @@ class User extends Authenticatable
      */
     protected $dates = ['deleted_at'];
 
-    public function getAvatarAttribute($avatar)
-    {
-        return asset(App::environment('production') ? 'files' : 'storage' . '/users/images/' . $avatar);
-    }
-
     public function setAvatarAttribute($photo)
     {
         $toStore = $this->attributes['name'] . '.' .$photo->getClientOriginalExtension();
-        $photo->storeAs('public/users/images', $toStore);
-        // $photo->move(public_path("users/images"), $toStore);
+        // $photo->storeAs('public/users/images', $toStore);
+        $photo->move(public_path("users/images"), $toStore);
         $this->attributes['avatar'] = $toStore;
         $this->attributes['active'] = '1';
     }
