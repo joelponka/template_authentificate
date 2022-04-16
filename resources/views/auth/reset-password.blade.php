@@ -1,5 +1,5 @@
 @extends('layouts.auth')
-@section('title')@lang('Login') @endsection
+@section('title')@lang('Reset Password') @endsection
 @section('content')
 <section class="section">
     <div class="container mt-5">
@@ -13,25 +13,32 @@
               <p class="text-muted">@lang('Enter Your New Password')</p>
               <form  method="POST" action="{{ route('password.update') }}">
                 @csrf
+                @method('POST')
                 <input type="hidden" name="token" value="{{ $request->route('token') }}">
                 <div class="form-group">
-                  <label for="email">@lang('Email')</label>
-                  <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                  <label for="email" class="form-label">@lang('Email') <span class="text-danger">*</span></label>
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
+                    name="email" tabindex="1" required autofocus placeholder="@lang('Email')" value="{{ $request->email ?? old('email') }}">
+                  @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
                 </div>
+
                 <div class="form-group">
-                  <label for="password">@lang('New Password')</label>
-                  <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator"
-                    name="password" tabindex="2" required>
-                  <div id="pwindicator" class="pwindicator">
-                    <div class="bar"></div>
-                    <div class="label"></div>
-                  </div>
+                  <label for="password" class="form-label">@lang('New Password') <span class="text-danger">*</span></label>
+                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                    name="password" tabindex="2" required placeholder="@lang('New Password')">
+                  @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
                 </div>
+
                 <div class="form-group">
-                  <label for="password-confirm">@lang('Confirm Password')</label>
-                  <input id="password-confirm" type="password" class="form-control" name="confirm-password"
-                    tabindex="2" required>
+                  <label for="password-confirm" class="form-label">@lang('Confirm Password') <span class="text-danger">*</span></label>
+                  <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                    tabindex="2" required autofocus placeholder="@lang('Confirm Password')">
                 </div>
+
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                     @lang('Reset Password')

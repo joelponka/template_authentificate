@@ -12,13 +12,19 @@
             <div class="card-body">
               <p class="text-muted">@lang('We will send a link to reset your password')</p>
               <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+                @method('post')
                 <div class="form-group">
-                  <label for="email">@lang('Email')</label>
-                  <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                  <label for="email" class="form-label">@lang('Email') <span class="text-danger">*</span></label>
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" 
+                    placeholder="@lang('E-mail')" value="{{ old('email') }}" tabindex="1" required autofocus>
+                  @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                    @lang('Forgot Password')
+                    @lang('Submit')
                   </button>
                 </div>
               </form>
