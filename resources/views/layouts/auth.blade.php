@@ -24,6 +24,7 @@
       @yield('content')
     
   </div>
+  @include('sweetalert::alert')
   <!-- General JS Scripts -->
   <script src="{{ asset('assets/js/app.min.js') }}"></script>
   <!-- JS Libraies -->

@@ -10,13 +10,18 @@
       <div class="row">
           <div class="col-12">
             <div class="card">
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                        <strong>@lang('Something has failed! Check the form again to see what exactly.')</strong>
+                    </div>
+                @endif
               <div class="card-header">
                   <h4> @lang('Permissions list') </h4>
                   <div class="card-toolbar">
                       <!--begin::Button-->
-                      <a href="{{ route('admin.permissions.create') }}" class="btn btn-primary">
-                          <span class="fas fa-plus"></span>
-                      </a>
+                      <button type="button" class="btn btn-{{ $errors->any() ? 'danger' : 'primary' }}" data-toggle="modal" data-target="#addPermissionModal">
+                        <span class="fas fa-plus"></span>
+                      </button>
                       <!--end::Button-->
                   </div>
               </div>
@@ -46,8 +51,7 @@
                                 @method("DELETE")
                                 @csrf
 
-                                <button class="btn btn-sm btn-danger btn-icon delete" title="@lang('Delete record')" 
-                                  onclick="return confirm('@lang('Are you sure you want to delete :attribute?', ['attribute'=>$permission->name])');"> 
+                                <button class="btn btn-sm btn-danger btn-icon delete" title="@lang('Delete record')"> 
                                   <span class="fas fa-trash"></span>
                                 </button>
                               </form>
@@ -63,4 +67,25 @@
       </div>
   </div>
 
+  @section('Page Scripts')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+  <script type="text/javascript">
+      $('.delete').click(function(event) {
+          var form =  $(this).closest("form");
+          event.preventDefault();
+          swal({
+              title: "{{ trans('Are you sure you want to delete this record ?') }}",
+              icon: "warning",
+              buttons: ["{{ trans('Cancel') }}", "{{ trans('Confirm') }}"],
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+              if (willDelete) {
+              form.submit();
+              }
+          });
+      });
+  </script>
+  @endsection
+  @include('admin.permissions.modal')
 @endsection

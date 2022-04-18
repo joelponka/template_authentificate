@@ -28,7 +28,7 @@
         <div class="col-lg-9 col-xl-9 col-sm-9">
             <div class="input-group input-group-solid input-group-lg">
                 <input type="text" class="form-control form-control-solid @error('name') is-invalid @enderror" 
-                    name="name" id="name" value="@if($route == 'admin.users.create'){{old('name')}}@else{{$user->name}}@endif"/>
+                    name="name" id="name" value="@if($route == 'admin.users.create'){{old('name')}}@else{{$user->name}}@endif" required/>
             </div>
             @error('name')
                 <span class="form-text text-muted" role="alert"><strong class="text-danger">{{ $message }}</strong></span>
@@ -43,7 +43,7 @@
         <div class="col-lg-9 col-xl-9 col-sm-9">
             <div class="input-group input-group-solid input-group-lg">
                 <input type="text" class="form-control form-control-solid @error('last_name') is-invalid @enderror" 
-                    name="last_name" id="last_name" value="@if($route == 'admin.users.create'){{old('last_name')}}@else{{$user->last_name}}@endif"/>
+                    name="last_name" id="last_name" value="@if($route == 'admin.users.create'){{old('last_name')}}@else{{$user->last_name}}@endif" required/>
             </div>
             @error('last_name')
                 <span class="form-text text-muted" role="alert"><strong class="text-danger">{{ $message }}</strong></span>
@@ -57,8 +57,8 @@
         <label class="col-sm-3 col-form-label">@lang('Email') <span class="text-danger">*</span></label>
         <div class="col-lg-9 col-xl-9 col-sm-9">
             <div class="input-group input-group-solid input-group-lg">
-                <input type="text" class="form-control form-control-solid @error('email') is-invalid @enderror" 
-                    name="email" id="email" value="@if($route == 'admin.users.create'){{old('email')}}@else{{$user->email}}@endif" />
+                <input type="email" class="form-control form-control-solid @error('email') is-invalid @enderror" 
+                    name="email" id="email" value="@if($route == 'admin.users.create'){{old('email')}}@else{{$user->email}}@endif" required/>
             </div>
             @error('email')
                 <span class="form-text text-muted" role="alert"><strong class="text-danger">{{ $message }}</strong></span>
@@ -72,8 +72,8 @@
         <label class="col-sm-3 col-form-label">@lang('Phone') <span class="text-danger">*</span></label>
         <div class="col-lg-9 col-xl-9 col-sm-9">
             <div class="input-group input-group-solid input-group-lg">
-                <input type="number" class="form-control form-control-solid @error('phone_number') is-invalid @enderror" 
-                    name="phone_number" id="phone_number" value="@if($route == 'admin.users.create'){{old('phone_number')}}@else{{$user->phone_number}}@endif" />
+                <input type="text" class="form-control form-control-solid @error('phone_number') is-invalid @enderror" 
+                    name="phone_number" id="phone_number" value="@if($route == 'admin.users.create'){{old('phone_number')}}@else{{$user->phone_number}}@endif" required/>
             </div>
             @error('phone_number')
                 <span class="form-text text-muted" role="alert"><strong class="text-danger">{{ $message }}</strong></span>
@@ -89,7 +89,7 @@
             <div class="col-lg-9 col-xl-9">
                 <div class="input-group input-group-solid input-group-lg">
                     <!-- Password field -->
-                    <input type="password" class="form-control form-control-solid @error('password') is-invalid @enderror" name="password" id="password">
+                    <input type="password" class="form-control form-control-solid @error('password') is-invalid @enderror" name="password" id="password" required>
                     <!-- An element to toggle between password visibility -->
                     <div class="input-group-append">
                         <div class="input-group-text" style="cursor: pointer;"><i class="far fa-eye" onclick="showPassword()"></i></div>
@@ -104,11 +104,11 @@
 
         <!--begin::Password confirmation-->
         <div class="form-group row">
-            <label class="col-xl-3 col-lg-3 col-form-label">@lang('Password confirmation')</label>
+            <label class="col-xl-3 col-lg-3 col-form-label">@lang('Password confirmation') <span class="text-danger">*</span></label>
             <div class="col-lg-9 col-xl-9">
                 <div class="input-group input-group-solid input-group-lg">
                     <!-- Password field -->
-                    <input type="password" class="form-control form-control-solid" name="password_confirmation" id="password_confirmation">
+                    <input type="password" class="form-control form-control-solid" name="password_confirmation" id="password_confirmation" required>
                     <!-- An element to toggle between password visibility -->
                     <div class="input-group-append">
                         <div class="input-group-text" style="cursor: pointer;"><i class="far fa-eye" onclick="showConfirmPassword()"></i></div>

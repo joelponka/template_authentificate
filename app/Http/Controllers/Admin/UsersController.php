@@ -48,7 +48,7 @@ class UsersController extends Controller
         $user->assignRole($roles);
 
         Alert::toast(trans('User has been successfully added.'), 'success');
-        return back();
+        return redirect()->route('admin.users.index');
     }
 
     /**

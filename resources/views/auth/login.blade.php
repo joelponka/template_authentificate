@@ -14,11 +14,13 @@
                   @csrf
                 <div class="form-group">
                   <label for="email">@lang('Email')</label>
-                  <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
-                  <div class="invalid-feedback">
-                    @lang('Please fill in your email')
-                  </div>
+                  <input id="email" type="email" class="form-control @error('password') is-invalid @enderror" name="email" 
+                    tabindex="1" required autofocus value="{{ $request->email ?? old('email') }}">
+                  @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
                 </div>
+
                 <div class="form-group">
                   <div class="d-block">
                     <label for="password" class="control-label">@lang('Password')</label>
@@ -30,10 +32,10 @@
                          @endif
                     </div>
                   </div>
-                  <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-                  <div class="invalid-feedback">
-                    @lang('Please fill in your password')
-                  </div>
+                  <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" tabindex="2" required>
+                  @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
                 </div>
                 <div class="form-group">
                   <div class="custom-control custom-checkbox">

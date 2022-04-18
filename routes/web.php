@@ -31,7 +31,7 @@ use App\Http\Controllers\Admin\PermissionsController;
         //route du profil
         Route::get('profil', [ProfileController::class, 'profil'])->name('profil');
         Route::put('profilinformation', [ProfileController::class, 'profilinformation'])->name('profilinformation');
-        Route::post('postupdatepassword', [ProfileController::class, 'postupdatepassword'])->name('postupdatepassword');
+        Route::post('updatepassword', [ProfileController::class, 'update_password'])->name('update_password');
         
         Route::middleware(['can:users_manage'])->group(function() {
             //Dashboard

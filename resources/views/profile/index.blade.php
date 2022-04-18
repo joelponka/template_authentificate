@@ -49,17 +49,17 @@
                     <div class="padding-20">
                         <ul class="nav nav-tabs" id="myTab2" role="tablist">
                             <li class="nav-item">
-                            <a class="nav-link active" id="home-tab2" data-toggle="tab" href="#about" role="tab"
+                            <a class="nav-link @if(!($errors->has('current_password') || $errors->has('password'))) active @endif" id="home-tab2" data-toggle="tab" href="#about" role="tab"
                                 aria-selected="true">@lang('Profile')</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" id="profile-tab2" data-toggle="tab" href="#settings" role="tab"
+                            <a class="nav-link @if(($errors->has('current_password') || $errors->has('password'))) active @endif" id="profile-tab2" data-toggle="tab" href="#settings" role="tab"
                                 aria-selected="false">@lang('Change Pasword')</a>
                             </li>
                         </ul>
                         <div class="tab-content tab-bordered" id="myTab3Content">
                             <!-- Profile informations -->
-                            <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="home-tab2">
+                            <div class="tab-pane fade @if(!($errors->has('current_password') || $errors->has('password'))) show active @endif" id="about" role="tabpanel" aria-labelledby="home-tab2">
                                 <form method="post" action="{{ route('admin.profilinformation') }}" class="needs-validation" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
@@ -78,12 +78,12 @@
                             <!-- End Profile Informations -->
 
                             <!-- Change password -->
-                            <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="profile-tab2">
-                                <form method="post" action="{{ route('admin.postupdatepassword') }}" enctype="multipart/form-data" class="needs-validation">
+                            <div class="tab-pane fade @if(($errors->has('current_password') || $errors->has('password'))) show active @endif" id="settings" role="tabpanel" aria-labelledby="profile-tab2">
+                                <form method="post" action="{{ route('admin.update_password') }}" enctype="multipart/form-data" class="needs-validation">
                                     @csrf
 
                                     <div class="card-header">
-                                        <h4>@lang('Change Pasword')</h4>
+                                        <h4>@lang('Change Password')</h4>
                                     </div>
 
                                     @include('profile.password')
