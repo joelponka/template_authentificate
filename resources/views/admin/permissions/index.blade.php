@@ -51,7 +51,7 @@
                                 @method("DELETE")
                                 @csrf
 
-                                <button class="btn btn-sm btn-danger btn-icon delete" title="@lang('Delete record')"> 
+                                <button class="btn btn-sm btn-danger btn-icon delete" title="@lang('Delete record')" onclick="confirmDelete()"> 
                                   <span class="fas fa-trash"></span>
                                 </button>
                               </form>
